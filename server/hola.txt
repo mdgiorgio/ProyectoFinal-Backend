@@ -1,2 +1,0 @@
-holu 
-mi primer línea del hola.txt
