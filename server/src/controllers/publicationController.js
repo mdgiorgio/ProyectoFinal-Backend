@@ -1,44 +1,44 @@
 const httpStatus = require('../helpers/httpStatus')
 
-const showController = (Show) => {
-  const getAllShows = async (req, res, next) => {
+const publicationController = (Publication) => {
+  const getAllPublications = async (req, res, next) => {
     try {
       const { query } = req
 
-      const show = await Show.find(query)
+      const publication = await publication.find(query)
 
-      return res.status(httpStatus.OK).json(show)
+      return res.status(httpStatus.OK).json(publication)
     } catch (err) {
       next(err)
     }
   }
 
-  const postShow = async (req, res, next) => {
+  const postPublication = async (req, res, next) => {
     try {
       const { body } = req
 
-      const show = await new Show(body)
+      const publication = await new Publication(body)
 
-      await show.save()
+      await publication.save()
 
-      res.status(httpStatus.CREATED).json(show)
+      res.status(httpStatus.CREATED).json(publication)
     } catch (err) {
       next(err)
     }
   }
   
-  const putShowById = async (req, res, next) => {
+  const putPublicationById = async (req, res, next) => {
     try {
       const { body, params } = req
 
-      const checkData = await Show.find({
+      const checkData = await Publication.find({
         _id: params.id
       })
 
       if (checkData === null) {
         return res.status(httpStatus.FORBIDDEN).send('No data found with the provided ID.')
       }
-      await Show.updateOne(
+      await Publication.updateOne(
         {
           _id: params.id
         },
@@ -59,11 +59,11 @@ const showController = (Show) => {
     }
   }
 
-  const getShowById = async (req, res, next) => {
+  const getPublicationById = async (req, res, next) => {
    try{ 
       const { params } = req
       
-      const response = await Show.findById(params.id)
+      const response = await publication.findById(params.id)
 
       return res.status(httpStatus.OK).json(response)
     } catch (err) {
@@ -71,11 +71,11 @@ const showController = (Show) => {
     }
   }
 
-  const deleteShowById = async (req, res, next) => {
+  const deletePublicationById = async (req, res, next) => {
     try{ 
       const { params } = req
 
-      const response = await Show.findByIdAndDelete(params.id)
+      const response = await Publication.findByIdAndDelete(params.id)
 
       return res.status(httpStatus.OK).json(response)
     } catch (err) {
@@ -84,12 +84,12 @@ const showController = (Show) => {
   }
 
   return {
-    getAllShows,
-    postShow,
-    putShowById,
-    getShowById,
-    deleteShowById
+    getAllPublications,
+    postPublication,
+    putPublicationById,
+    getPublicationById,
+    deletePublicationById
   }
 }
 
-module.exports = showController
+module.exports = publicationController

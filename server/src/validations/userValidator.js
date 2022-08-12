@@ -16,11 +16,11 @@ const bodySchema = Joi.object({
     password: Joi.string().required().trim().min(6).max(20),
     mail: Joi.string().email().required().trim(),
     phone: Joi.string().min(9).max(13).required().trim()
-    //birthday: {},    
+ 
 })
 
 const bodyAuthSchema = Joi.object({
-        name: Joi.string().alphanum().min(3).max(50).required().trim(),
+    name: Joi.string().alphanum().min(3).max(50).required().trim(),
     username: Joi.string().min(6).max(30).required().trim(),
 }) 
 

@@ -1,14 +1,14 @@
 const express = require('express')
 const User = require('./models/userModel')
-const Show = require('./models/publicationModel')
+const Publication = require('./models/publicationModel')
 const userRouter = require('./routes/userRouter')(User)
-const showRouter = require('.routes/showRouter')(Show)
+const publicationRouter = require('./routes/publicationRouter')(Publication)
 const authRouter = require('./routes/authRouter')(User)
 const errorHandler = require('./middleware/errorHandler')
 const { expressjwt } = require('express-jwt')
 require('dotenv').config()
 const httpStatus = require('./helpers/httpStatus')
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 8000
 
 const app = express()
 
@@ -35,7 +35,7 @@ app.use((err, _, res, next) => {
   }
 }) 
 
-app.use('/api', userRouter, showRouter)
+app.use('/api', userRouter, publicationRouter)
 app.use('/', authRouter) 
 
 app.use(errorHandler)
