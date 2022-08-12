@@ -10,9 +10,9 @@ const userModel = new Schema({
         maxLength: 30,
         unique: true
     },
-    password: { type: String, required: true, minLength: 6, maxLength: 20 },
+    password: { type: String, required: true, minLength: 6},
     mail: { type: String, required: true, unique: true },
-    phone: { type: String, required: true, minLength: 11, maxLength: 14 },
+    phone: { type: String, required: true, minLength: 8, maxLength: 14 },
     //birthday: {},
     role: { type: String }
 

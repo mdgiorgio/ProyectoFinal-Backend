@@ -13,9 +13,9 @@ const querySchema = Joi.object({
 const bodySchema = Joi.object({
     name: Joi.string().alphanum().min(3).max(50).required().trim(),
     username: Joi.string().min(6).max(30).required().trim(),
-    password: Joi.string().required().trim().min(6).max(20),
+    password: Joi.string().required().trim().min(6),
     mail: Joi.string().email().required().trim(),
-    phone: Joi.string().min(9).max(13).required().trim()
+    phone: Joi.string().min(8).max(14).required().trim()
  
 })
 

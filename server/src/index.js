@@ -5,7 +5,7 @@ const userRouter = require('./routes/userRouter')(User)
 const publicationRouter = require('./routes/publicationRouter')(Publication)
 const authRouter = require('./routes/authRouter')(User)
 const errorHandler = require('./middleware/errorHandler')
-const { expressjwt } = require('express-jwt')
+//const { expressjwt } = require('express-jwt')
 require('dotenv').config()
 const httpStatus = require('./helpers/httpStatus')
 const PORT = process.env.PORT || 8000
@@ -17,12 +17,12 @@ require('./database/db')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.all(
+/* app.all(
   '/*',
   expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }).unless({
     path: ['/auth/login', '/auth/register']
   })
-)
+) */
 
 app.use((err, _, res, next) => {
   if (err.name === 'UnauthorizedError') {

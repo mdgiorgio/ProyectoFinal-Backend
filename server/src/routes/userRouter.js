@@ -11,11 +11,11 @@ const router = (User) => {
   userController(User)
 
   userRouter
-    .route('/User')
+    .route('/user')
     .get(validator.query(querySchema), getAllUser)
   
   userRouter
-    .route('/User/:id')
+    .route('/user/:id')
     .get(validator.params(paramsSchema), getUserById)
     .put(validator.params(paramsSchema), validator.body(bodySchema), putUserById)
     .delete(validator.params(paramsSchema), deleteUserById)
