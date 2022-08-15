@@ -7,9 +7,13 @@ const router = (User) => {
 
     const { logIn, register } = authController(User)
 
-    authRouter.route('/auth/login').post(logIn)
+    authRouter
+        .route('/auth/login')
+        .post(logIn)
 
-    authRouter.route('/auth/register').post(register)
+    authRouter
+        .route('/auth/register')
+        .post(validator.body(bodySchema), register)
 
     return authRouter
 }

@@ -7,6 +7,12 @@ const ERROR_HANDLERS = {
                 message: 'Login to access'})
     },
     
+    SyntaxError:  (res, err) => {
+        res
+        .status(httpStatus.BAD_REQUEST)
+        .send({error: err.name, cause: err.message, message: 'typing error, please check the data' })
+    },
+
     ValidationError: (res, err) => {
         res
             .status(422)
