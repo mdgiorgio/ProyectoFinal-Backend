@@ -7,6 +7,8 @@ const publicationModel = new Schema({
     date: { type: Date, required: true },
     artist: { type: String, required: true, minLength: 3, maxLength: 45 },
     price: { type: Number, required: true, maxLength: 999999 },
+    ticket: { type: Number, required: true, maxLength: 200000 },
+    category: { type: String, required: true }
     
   })
 

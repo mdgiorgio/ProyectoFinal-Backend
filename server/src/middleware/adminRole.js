@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const httpStatus = require('../helpers/httpStatus')
-const User = require('./models/userModel')
+const User = require('../models/userModel')
 
 const adminRole = async (req, res, next) => {
     const { authorization } = req.headers;
@@ -13,9 +13,8 @@ const adminRole = async (req, res, next) => {
             return next()
         }
     } return res.status(httpStatus.UNAUTHORIZED).json({
-        error: err.name,
         cause: 'Unauthorized. Missing or invalid token provided.'
     })
-}
+}    
 
 module.exports = adminRole

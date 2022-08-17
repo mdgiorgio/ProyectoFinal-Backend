@@ -16,6 +16,8 @@ const bodySchema = Joi.object({
     date: Joi.date().required,
     artist: Joi.string().min(3).max(45).required,
     price: Joi.number().max(999999).required,
+    ticket: Joi.number().max(200000).required,
+    category: Joi.string().required
     
 })
 

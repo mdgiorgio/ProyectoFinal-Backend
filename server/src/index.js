@@ -10,7 +10,6 @@ const { expressjwt } = require('express-jwt')
 require('dotenv').config()
 const httpStatus = require('./helpers/httpStatus')
 const PORT = process.env.PORT || 8000
-const adminRole = require('./middleware/adminRole')
 
 const app = express()
 
@@ -37,8 +36,6 @@ app.use((err, _, res, next) => {
     next(err)
   }
 }) 
-
-app.use(adminRole)
 
 app.use('/api', userRouter, publicationRouter)
 app.use('/', authRouter) 

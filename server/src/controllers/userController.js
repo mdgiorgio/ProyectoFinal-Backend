@@ -39,7 +39,8 @@ const userController = (User) => {
                         password: encryptedPassword,
                         mail: body.email,
                         phone: body.phone,
-                        //birthday: ,
+                        role: body.role,
+                        myTickets: body.myTickets
                     }
                 }
             )

@@ -14,7 +14,8 @@ const userModel = new Schema({
     mail: { type: String, required: true, unique: true },
     phone: { type: String, required: true, minLength: 8, maxLength: 14 },
     //birthday: {},
-    role: { type: String }
+    role: { type: String },
+    myTickets: [{ artist: String, quantity: Number }]
 
 })
 

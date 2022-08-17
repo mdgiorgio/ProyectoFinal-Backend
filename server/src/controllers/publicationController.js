@@ -26,6 +26,18 @@ const publicationController = (Publication) => {
       next(err)
     }
   }
+
+  const getPublicationById = async (req, res, next) => {
+    try{ 
+       const { params } = req
+       
+       const response = await publication.findById(params.id)
+ 
+       return res.status(httpStatus.OK).json(response)
+     } catch (err) {
+       next(err)
+     }
+   }
   
   const putPublicationById = async (req, res, next) => {
     try {
@@ -44,11 +56,11 @@ const publicationController = (Publication) => {
         },
         {
             $set: {
-                title: {},
-                date: {},
-                artist: {},
-                price: {},
-                photo: {},
+                title: body.title,
+                date: body.date,
+                artist: body.artist,
+                price: body.price,
+                ticket: body.ticket
             }
         }
       )
@@ -59,17 +71,7 @@ const publicationController = (Publication) => {
     }
   }
 
-  const getPublicationById = async (req, res, next) => {
-   try{ 
-      const { params } = req
-      
-      const response = await publication.findById(params.id)
-
-      return res.status(httpStatus.OK).json(response)
-    } catch (err) {
-      next(err)
-    }
-  }
+ 
 
   const deletePublicationById = async (req, res, next) => {
     try{ 
